@@ -1,0 +1,62 @@
+def menu():
+    print("""
+    Which type of conversion do you want?
+    \t1. USD to EUR
+    \t2. USD to GBP
+    \t3. USD to JPY
+    \t4. USD to CAD
+    """)
+    
+    while True:
+        cmd_num = [1, 2, 3, 4]
+        cmd = input("Enter your choice: ")
+        try:
+            cmd = int(cmd)
+            if cmd in cmd_num:
+                usd = float(input("How much do you want to convert: "))
+                if cmd == 1:
+                    res = usdToEur(usd)
+                elif cmd == 2:
+                    res = usdToGbp(usd)
+                elif cmd == 3:
+                    res = usdToJpy(usd)
+                else:
+                    res = usdToCad(usd)
+            return res
+            break
+        except:
+            print("Invalid Command. Try Again.")
+
+def usdToEur(usd):
+    eur = usd * 0.87
+    eur = round(eur, 2)
+    return (str(eur) + " EUR")
+
+def usdToGbp(usd):
+    gbp = usd * 0.78
+    gbp = round(gbp, 2)
+    return (str(gbp) + " GBP")
+    
+def usdToJpy(usd):
+    jpy = usd * 108.55
+    jpy = round(jpy, 2)
+    return (str(jpy) + " JPY")
+    
+def usdToCad(usd):
+    cad = usd * 1.33
+    cad = round(cad, 2)
+    return (str(cad) + " CAD")
+                    
+
+while True:
+    cmd = input("Do you want any currency convert service? if yes type 'y', else type 'n': ")
+    if cmd == 'y' or cmd == 'n':
+        if cmd == 'y':
+            res = menu()
+            print(res)
+            break
+        elif cmd == 'n':
+            break
+        else:
+            print("Invalid input. Try again.")
+print("Thank You!!!")
